@@ -8,3 +8,6 @@ export * from './src/index';
 export default {
 	directives: [ YoutubePlayer, YoutubePlayerService ]
 }
+
+
+
