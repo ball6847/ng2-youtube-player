@@ -1,4 +1,3 @@
-import { Http, URLSearchParams, Response } from '@angular/http';
 import { Injectable, NgZone, EventEmitter } from '@angular/core';
 import { window } from '@angular/platform-browser/src/facade/browser';
 import { ReplaySubject } from 'rxjs/ReplaySubject'
@@ -17,7 +16,6 @@ export interface PlayerSize {
 export class YoutubePlayerService {
   api: ReplaySubject<YT.Player>;
 
-  private isFullscreen: boolean = false;
   private defaultSizes = {
       height: 270,
       width: 367
@@ -75,7 +73,6 @@ export class YoutubePlayerService {
   }
 
   createPlayer (elementId: string, outputs: PlayerOutputs, sizes: PlayerSize, videoId: string) {
-    const service = this;
     const playerSize = {
       height: sizes.height || this.defaultSizes.height,
       width: sizes.width || this.defaultSizes.width
@@ -93,24 +90,6 @@ export class YoutubePlayerService {
           }
       }
     }));
-
-    function onPlayerStateChange (event: any) {
-      const state = event.data;
-      // play the next song if its not the end of the playlist
-      // should add a "repeat" feature
-      if (state === YT.PlayerState.ENDED) {
-
-      }
-
-      if (state === YT.PlayerState.PAUSED) {
-          // service.playerState = YT.PlayerState.PAUSED;
-      }
-      if (state === YT.PlayerState.PLAYING) {
-          // service.playerState = YT.PlayerState.PLAYING;
-      }
-      // console.log('state changed', state);
-      // dispatch STATE CHANGE
-    }
   }
 
   toggleFullScreen (player: YT.Player, isFullScreen: boolean | null | undefined) {
