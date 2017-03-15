@@ -6,6 +6,7 @@
   "typings": "./ng2-youtube-player.d.ts",
   "repository": "orizens/ng2-youtube-player",
   "scripts": {
+    "build": "tsc --project ./src",
     "build:test": "tsc --project ./src",
     "clean": "npm run clean:js && npm run clean:def && npm run clean:aot",
     "clean:def": "rimraf src/*.d.ts && rimraf ./*scroll.d.ts",
